@@ -34,7 +34,7 @@ limitations under the License.
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:alpha="0.75"
-        android:padding="75dp"
+        android:padding="100dp"
         android:src="@drawable/logo" />
 
 </RelativeLayout>
