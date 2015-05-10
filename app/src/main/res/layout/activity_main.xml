@@ -25,7 +25,7 @@ limitations under the License.
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         slide:source="@drawable/background"
-        slide:duration="50000"
+        slide:duration="20000"
         slide:slowdown="false"/>
 
     <ImageView
