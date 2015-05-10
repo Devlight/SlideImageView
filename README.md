@@ -2,7 +2,7 @@ SlideImageView
 ===================
 Simple and convenient library that allows you to slide images through a view.
 
-![enter image description here](https://lh3.googleusercontent.com/-tEGTcZauR7U/VU-2FuLb1-I/AAAAAAAAAbs/byVJQyRCGoY/w366-h552-no/siv.gif)
+![enter image description here](https://lh3.googleusercontent.com/-Wxw4oQFebDI/VU--zE7U0HI/AAAAAAAAAcM/WZ82t0sTdCc/w366-h552-no/siv.gif)
 
 U can check the sample app [here](https://github.com/GIGAMOLE/SlideImageView/tree/master/app).
 
