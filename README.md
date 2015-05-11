@@ -69,7 +69,7 @@ And XML init:
 Getting Help
 ======
 
-To report a specific problem or feature request, [open a new issue on Github](https://github.com/GIGAMOLE/Mill-Spinners/issues/new). 
+To report a specific problem or feature request, [open a new issue on Github](https://github.com/GIGAMOLE/SlideImageView/issues/new).
 
 License
 ======
