@@ -28,9 +28,7 @@ limitations under the License.
             android:id="@+id/img_vertical_slide"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            slide:source="@drawable/long_background"
-            slide:axis="vertical"/>
+            android:layout_weight="1"/>
 
         <com.gigamole.slideimageview.lib.SlideImageView
             android:id="@+id/img_horizontal_slide"

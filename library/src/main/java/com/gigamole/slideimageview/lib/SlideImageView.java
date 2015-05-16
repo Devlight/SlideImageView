@@ -111,21 +111,20 @@ public class SlideImageView extends ImageView {
 
     public void setSource(Drawable source) {
         this.bitmap = ((BitmapDrawable) source).getBitmap();
+        requestLayout();
     }
 
     public void setSource(Bitmap source) {
         this.bitmap = source;
+        requestLayout();
     }
 
     public void setSource(int sourceId) {
         this.bitmap = ((BitmapDrawable) getResources().getDrawable(sourceId)).getBitmap();
+        requestLayout();
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        this.width = w;
-        this.height = h;
-
+    private void createSource() {
         if (this.bitmap != null) {
             if (this.axis == Axis.HORIZONTAL) {
                 this.bitmap = Bitmap.createScaledBitmap(
@@ -143,10 +142,19 @@ public class SlideImageView extends ImageView {
                 this.slideSize = (this.bitmap.getHeight() - this.height) * -1;
             }
         } else {
-            throw new NullPointerException(getContext().getString(R.string.source_error));
+            this.bitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
         }
+    }
 
-        super.onSizeChanged(w, h, oldw, oldh);
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        this.width = MeasureSpec.getSize(widthMeasureSpec);
+        this.height = MeasureSpec.getSize(heightMeasureSpec);
+
+        createSource();
+
+        this.setMeasuredDimension(this.width, this.height);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
