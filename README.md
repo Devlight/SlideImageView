@@ -38,7 +38,7 @@ Or Maven:
 
 Android SDK Version
 =========
-SlideImageView requires a minimum sdk version of 10.
+SlideImageView requires a minimum sdk version of 8.
 
 Sample
 ========
