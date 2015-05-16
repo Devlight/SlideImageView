@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -106,6 +107,14 @@ public class SlideImageView extends ImageView {
         } else {
             this.axis = Axis.VERTICAL;
         }
+    }
+
+    public void setSource(Drawable source) {
+        this.bitmap = ((BitmapDrawable) source).getBitmap();
+    }
+
+    public void setSource(Bitmap source) {
+        this.bitmap = source;
     }
 
     public void setSource(int sourceId) {
