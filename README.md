@@ -25,14 +25,14 @@ Or use Gradle jCenter:
 
 Or Gradle Maven Central:
 
-    compile 'com.github.gigamole.slideimageview:library:1.0.0'
+    compile 'com.github.gigamole.slideimageview:library:1.1.0'
 
 Or Maven:
 
     <dependency>
 	    <groupId>com.github.gigamole.slideimageview</groupId>
 	    <artifactId>library</artifactId>
-	    <version>1.0.0</version>
+	    <version>1.1.0</version>
 	    <type>aar</type>
     </dependency>
 
@@ -46,25 +46,25 @@ Sample
 You can set such parameters as:
 
  - source
- - duration
- - slowdown
+ - axis (HORIZONTAL | VERTICAL)
+ - rate
 
 Check out in code init:
 
-    SlideImageView slidedImageView = (SlideImageView) findViewById(R.id.img_slide);
-    slidedImageView.setDuration(50000);
-    slidedImageView.setSource(R.drawable.background);
-    slidedImageView.setSlowdown(false);
+    SlideImageView slideImageView = (SlideImageView) findViewById(R.id.img_horizontal_slide);
+    slideImageView.setSource(R.drawable.wide_background);
+    slideImageView.setRate(0.3f);
+    slideImageView.setAxis(SlideImageView.Axis.HORIZONTAL);
 
 And XML init:
 
     <com.gigamole.slideimageview.lib.SlideImageView
-        android:id="@+id/img_slide"
+        android:id="@+id/img_vertical_slide"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        slide:source="@drawable/background"
-        slide:duration="50000"
-        slide:slowdown="false"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        slide:source="@drawable/long_background"
+        slide:axis="vertical"/>
 
 Getting Help
 ======

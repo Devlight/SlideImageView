@@ -23,9 +23,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.Transformation;
 import android.widget.ImageView;
 
 /**
@@ -36,12 +33,33 @@ public class SlideImageView extends ImageView {
     private int width;
     private int height;
 
-    private int duration;
+    private float rate;
     private Bitmap bitmap;
-    private boolean isSlowdown;
 
     private float bitmapX;
-    private float slideWidth;
+    private float bitmapY;
+    private int slideSize;
+
+    private Axis axis;
+
+    public enum Axis {
+        HORIZONTAL,
+        VERTICAL
+    }
+
+    private HorizontalDirection horizontalDirection = HorizontalDirection.LEFT_TO_RIGHT;
+
+    private enum HorizontalDirection {
+        LEFT_TO_RIGHT,
+        RIGHT_TO_LEFT
+    }
+
+    private VerticalDirection verticalDirection = VerticalDirection.TOP_TO_BOTTOM;
+
+    private enum VerticalDirection {
+        TOP_TO_BOTTOM,
+        BOTTOM_TO_TOP
+    }
 
     public SlideImageView(Context context) {
         this(context, null);
@@ -57,13 +75,16 @@ public class SlideImageView extends ImageView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidedImageView);
 
         try {
-            this.duration = typedArray.getInteger(R.styleable.SlidedImageView_duration, 30000);
-            this.isSlowdown = typedArray.getBoolean(R.styleable.SlidedImageView_slowdown, true);
-
             final int sourceId = typedArray.getResourceId(R.styleable.SlidedImageView_source, 0);
             if (sourceId != 0) {
                 setSource(sourceId);
             }
+
+            final float rate = typedArray.getFloat(R.styleable.SlidedImageView_rate, 0.3f);
+            setRate(rate);
+
+            final int axis = typedArray.getInteger(R.styleable.SlidedImageView_axis, 0);
+            setAxis(axis);
         } finally {
             typedArray.recycle();
         }
@@ -71,16 +92,24 @@ public class SlideImageView extends ImageView {
         setWillNotDraw(false);
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setRate(float rate) {
+        this.rate = rate * (-1);
+    }
+
+    public void setAxis(Axis axis) {
+        this.axis = axis;
+    }
+
+    private void setAxis(int axis) {
+        if (axis == 0) {
+            this.axis = Axis.HORIZONTAL;
+        } else {
+            this.axis = Axis.VERTICAL;
+        }
     }
 
     public void setSource(int sourceId) {
         this.bitmap = ((BitmapDrawable) getResources().getDrawable(sourceId)).getBitmap();
-    }
-
-    public void setSlowdown(boolean isSlowdown) {
-        this.isSlowdown = isSlowdown;
     }
 
     @Override
@@ -89,14 +118,21 @@ public class SlideImageView extends ImageView {
         this.height = h;
 
         if (this.bitmap != null) {
-            this.bitmap = Bitmap.createScaledBitmap(
-                    this.bitmap,
-                    this.height * this.bitmap.getWidth() / this.bitmap.getHeight(),
-                    this.height,
-                    false);
-            this.slideWidth = this.bitmap.getWidth() - this.width;
-
-            startAnimation(new SlideAnimation());
+            if (this.axis == Axis.HORIZONTAL) {
+                this.bitmap = Bitmap.createScaledBitmap(
+                        this.bitmap,
+                        this.height * this.bitmap.getWidth() / this.bitmap.getHeight(),
+                        this.height,
+                        false);
+                this.slideSize = (this.bitmap.getWidth() - this.width) * -1;
+            } else {
+                this.bitmap = Bitmap.createScaledBitmap(
+                        this.bitmap,
+                        this.width,
+                        this.width * this.bitmap.getHeight() / this.bitmap.getWidth(),
+                        false);
+                this.slideSize = (this.bitmap.getHeight() - this.height) * -1;
+            }
         } else {
             throw new NullPointerException(getContext().getString(R.string.source_error));
         }
@@ -108,26 +144,39 @@ public class SlideImageView extends ImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawBitmap(this.bitmap, this.bitmapX, 0, null);
-    }
-
-    public class SlideAnimation extends Animation {
-
-        public SlideAnimation() {
-            if (!isSlowdown) {
-                setInterpolator(new LinearInterpolator());
+        if (this.axis == Axis.HORIZONTAL) {
+            if (this.horizontalDirection == HorizontalDirection.LEFT_TO_RIGHT) {
+                if (Math.round(this.bitmapX) == this.slideSize) {
+                    this.rate = -this.rate;
+                    this.horizontalDirection = HorizontalDirection.RIGHT_TO_LEFT;
+                }
+            } else {
+                if (Math.round(this.bitmapX) == 0) {
+                    this.rate = -this.rate;
+                    this.horizontalDirection = HorizontalDirection.LEFT_TO_RIGHT;
+                }
             }
 
-            setDuration(duration);
-            setRepeatCount(INFINITE);
-            setRepeatMode(REVERSE);
+            this.bitmapX += this.rate;
+            this.bitmapY = 0;
+        } else {
+            if (this.verticalDirection == VerticalDirection.TOP_TO_BOTTOM) {
+                if (Math.round(this.bitmapY) == this.slideSize) {
+                    this.rate = -this.rate;
+                    this.verticalDirection = VerticalDirection.BOTTOM_TO_TOP;
+                }
+            } else {
+                if (Math.round(this.bitmapY) == 0) {
+                    this.rate = -this.rate;
+                    this.verticalDirection = VerticalDirection.TOP_TO_BOTTOM;
+                }
+            }
+
+            this.bitmapX = 0;
+            this.bitmapY += this.rate;
         }
 
-        @Override
-        protected void applyTransformation(float interpolatedTime, Transformation t) {
-            bitmapX = -interpolatedTime * slideWidth;
-
-            postInvalidate();
-        }
+        canvas.drawBitmap(this.bitmap, this.bitmapX, this.bitmapY, null);
+        postInvalidate();
     }
 }

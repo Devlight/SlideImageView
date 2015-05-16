@@ -18,15 +18,29 @@ limitations under the License.
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.gigamole.slideimageview.lib.SlideImageView
-        android:id="@+id/img_slide"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        slide:source="@drawable/background"
-        slide:duration="20000"
-        slide:slowdown="false"/>
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <com.gigamole.slideimageview.lib.SlideImageView
+            android:id="@+id/img_vertical_slide"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            slide:source="@drawable/long_background"
+            slide:axis="vertical"/>
+
+        <com.gigamole.slideimageview.lib.SlideImageView
+            android:id="@+id/img_horizontal_slide"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            slide:source="@drawable/wide_background"
+            slide:axis="horizontal"/>
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
@@ -34,7 +48,7 @@ limitations under the License.
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:alpha="0.75"
-        android:padding="100dp"
+        android:padding="75dp"
         android:src="@drawable/logo" />
 
 </RelativeLayout>

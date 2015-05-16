@@ -29,10 +29,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        SlideImageView slidedImageView = (SlideImageView) findViewById(R.id.img_slide);
-//        slidedImageView.setDuration(50000);
-//        slidedImageView.setSource(R.drawable.background);
-//        slidedImageView.setSlowdown(false);
+//        SlideImageView slidedImageView = (SlideImageView) findViewById(R.id.img_horizontal_slide);
+//        slidedImageView.setSource(R.drawable.wide_background);
+//        slidedImageView.setRate(0.3f);
+//        slidedImageView.setAxis(SlideImageView.Axis.HORIZONTAL);
     }
 
 
