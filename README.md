@@ -25,14 +25,14 @@ Or use Gradle jCenter:
 
 Or Gradle Maven Central:
 
-    compile 'com.github.gigamole.slideimageview:library:1.1.1'
+    compile 'com.github.gigamole.slideimageview:library:1.1.2'
 
 Or Maven:
 
     <dependency>
 	    <groupId>com.github.gigamole.slideimageview</groupId>
 	    <artifactId>library</artifactId>
-	    <version>1.1.1</version>
+	    <version>1.1.2</version>
 	    <type>aar</type>
     </dependency>
 
