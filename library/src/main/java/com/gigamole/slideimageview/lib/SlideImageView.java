@@ -176,8 +176,6 @@ public class SlideImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
         if (this.axis == Axis.HORIZONTAL) {
             if (this.horizontalDirection == HorizontalDirection.LEFT_TO_RIGHT) {
                 if (Math.round(this.bitmapX) == this.slideSize) {
