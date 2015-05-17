@@ -125,6 +125,12 @@ public class SlideImageView extends ImageView {
     }
 
     private void createSource() {
+        this.bitmapX = 0;
+        this.bitmapY = 0;
+
+        this.horizontalDirection = HorizontalDirection.LEFT_TO_RIGHT;
+        this.verticalDirection = VerticalDirection.TOP_TO_BOTTOM;
+
         if (this.bitmap != null) {
             if (this.axis == Axis.HORIZONTAL) {
                 this.bitmap = Bitmap.createScaledBitmap(
