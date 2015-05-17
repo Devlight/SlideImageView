@@ -35,6 +35,8 @@ public class SlideImageView extends ImageView {
     private int height;
 
     private float rate;
+    private float originalRate;
+
     private Bitmap bitmap;
 
     private float bitmapX;
@@ -95,10 +97,12 @@ public class SlideImageView extends ImageView {
 
     public void setRate(float rate) {
         this.rate = rate * (-1);
+        this.originalRate = this.rate;
     }
 
     public void setAxis(Axis axis) {
         this.axis = axis;
+        this.originalRate = this.rate;
     }
 
     private void setAxis(int axis) {
@@ -131,9 +135,7 @@ public class SlideImageView extends ImageView {
         this.horizontalDirection = HorizontalDirection.LEFT_TO_RIGHT;
         this.verticalDirection = VerticalDirection.TOP_TO_BOTTOM;
 
-        if (this.rate > 0) {
-            this.rate = this.rate * (-1);
-        }
+        this.rate = this.originalRate;
 
         if (this.bitmap != null) {
             if (this.axis == Axis.HORIZONTAL) {
@@ -154,6 +156,8 @@ public class SlideImageView extends ImageView {
         } else {
             this.bitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
         }
+
+        invalidate();
     }
 
     @Override
