@@ -131,6 +131,10 @@ public class SlideImageView extends ImageView {
         this.horizontalDirection = HorizontalDirection.LEFT_TO_RIGHT;
         this.verticalDirection = VerticalDirection.TOP_TO_BOTTOM;
 
+        if (this.rate > 0) {
+            this.rate = this.rate * (-1);
+        }
+
         if (this.bitmap != null) {
             if (this.axis == Axis.HORIZONTAL) {
                 this.bitmap = Bitmap.createScaledBitmap(
@@ -138,14 +142,14 @@ public class SlideImageView extends ImageView {
                         this.height * this.bitmap.getWidth() / this.bitmap.getHeight(),
                         this.height,
                         false);
-                this.slideSize = (this.bitmap.getWidth() - this.width) * -1;
+                this.slideSize = (this.bitmap.getWidth() - this.width) * (-1);
             } else {
                 this.bitmap = Bitmap.createScaledBitmap(
                         this.bitmap,
                         this.width,
                         this.width * this.bitmap.getHeight() / this.bitmap.getWidth(),
                         false);
-                this.slideSize = (this.bitmap.getHeight() - this.height) * -1;
+                this.slideSize = (this.bitmap.getHeight() - this.height) * (-1);
             }
         } else {
             this.bitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
