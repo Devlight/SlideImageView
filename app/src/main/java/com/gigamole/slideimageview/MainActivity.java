@@ -28,11 +28,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        SlideImageView slidedImageView = (SlideImageView) findViewById(R.id.img_horizontal_slide);
-//        slidedImageView.setSource(R.drawable.wide_background);
-//        slidedImageView.setRate(0.3f);
-//        slidedImageView.setAxis(SlideImageView.Axis.HORIZONTAL);
     }
 
 

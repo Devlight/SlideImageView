@@ -129,6 +129,8 @@ public class SlideImageView extends ImageView {
     }
 
     private void createSource() {
+        setWillNotDraw(true);
+
         this.bitmapX = 0;
         this.bitmapY = 0;
 
@@ -157,7 +159,8 @@ public class SlideImageView extends ImageView {
             this.bitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
         }
 
-        invalidate();
+        postInvalidate();
+        setWillNotDraw(false);
     }
 
     @Override
