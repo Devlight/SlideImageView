@@ -8,6 +8,7 @@ Simple and convenient library that allows you to slide images through a view.
 [![Android](https://img.shields.io/badge/platform-android-brightgreen.svg?style=flat&label=Platform)](https://github.com/DevLight-Mobile-Agency)
 [![Download](https://api.bintray.com/packages/gigamole/maven/slideimageview/images/download.svg)](https://bintray.com/gigamole/maven/slideimageview/_latestVersion)
 [![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg?maxAge=2592000&label=License)](https://github.com/DevLight-Mobile-Agency/SlideImageView/blob/master/LICENSE.txt)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0b467adb674e42a088ef2802901979be)](https://www.codacy.com/app/gigamole53/SlideImageView?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DevLight-Mobile-Agency/SlideImageView&amp;utm_campaign=Badge_Grade)
 
 ![](https://lh5.googleusercontent.com/-2BiBFz-OW_s/VU_EPv33XMI/AAAAAAAAAcc/nGie_kBoZQ8/w244-h368-no/siv.gif)
 
