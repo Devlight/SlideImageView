@@ -22,7 +22,7 @@ Simple and convenient library that allows you to slide images through a view.
 <br/>
 
 <p align="center">
-    <img src="https://drive.google.com/uc?export=download&id=0BxPO_UeS7wScU1JlaFV5bTRyS2M"/>
+    <img src="https://drive.google.com/uc?export=download&id=0BxPO_UeS7wScWHZHNTFfMkdCbjA"/>
 </p>
 
 You can check the sample app [here](https://github.com/DevLight-Mobile-Agency/SlideImageView/tree/master/app).
