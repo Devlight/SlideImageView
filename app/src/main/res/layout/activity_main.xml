@@ -22,7 +22,7 @@ limitations under the License.
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:siv_source="@drawable/main_bg"
-        app:siv_rate="1.0"
+        app:siv_rate="2.0"
         app:siv_axis="horizontal"/>
 
     <View
