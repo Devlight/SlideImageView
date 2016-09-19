@@ -19,8 +19,6 @@ Simple and convenient library that allows you to slide images through a view.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![Codacy](https://drive.google.com/uc?export=download&id=0BxPO_UeS7wScSHhmckZyeGJDcXc)](https://www.codacy.com/app/gigamole53/SlideImageView?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DevLight-Mobile-Agency/SlideImageView&amp;utm_campaign=Badge_Grade)
 
-<br/>
-
 <p align="center">
     <img src="https://drive.google.com/uc?export=download&id=0BxPO_UeS7wScWHZHNTFfMkdCbjA"/>
 </p>
