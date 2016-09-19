@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.gigamole.slideimageview"
+        applicationId "devlight.io.sample"
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
@@ -23,6 +23,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
-//    compile 'com.github.gigamole.slideimageview:library:1.1.4'
-    compile project(':library')
+    compile project(':slideimageview')
 }

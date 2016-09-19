@@ -11,44 +11,32 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:slide="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="devlight.io.sample.MainActivity">
 
-    <LinearLayout
+    <devlight.io.library.SlideImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="2"
-        android:orientation="vertical">
+        app:siv_source="@drawable/main_bg"
+        app:siv_rate="1.0"
+        app:siv_axis="horizontal"/>
 
-        <com.gigamole.slideimageview.lib.SlideImageView
-            android:id="@+id/img_vertical_slide"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            slide:source="@drawable/long_background"
-            slide:axis="vertical"/>
-
-        <com.gigamole.slideimageview.lib.SlideImageView
-            android:id="@+id/img_horizontal_slide"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            slide:source="@drawable/wide_background"
-            slide:axis="horizontal"/>
-
-    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:alpha="0.4"/>
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
         android:adjustViewBounds="true"
-        android:alpha="0.75"
-        android:padding="75dp"
-        android:src="@drawable/logo" />
+        android:layout_margin="130dp"
+        android:src="@drawable/ic_logo" />
 
-</RelativeLayout>
+</FrameLayout>
